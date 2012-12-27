@@ -20,20 +20,18 @@ describe 'Bank Account' => sub {
             is($account->balance, 50.00);
         };
     };
-  context 'transferring money' => sub {
-    it 'withdraws amount from the source account' => sub {
-      my $source = BankAccount->new(100);
-      my $target = BankAccount->new(0);
-      $source->transfer(50, $target);
-      is($source->balance, 50);
+    context 'transferring money' => sub {
+        my $source = BankAccount->new(100);
+        my $target = BankAccount->new(0);
+        $source->transfer(50, $target);
+
+        it 'withdraws amount from the source account' => sub {
+            is($source->balance, 50);
+        };
+        it 'deposits amount into target account' => sub {
+            is($target->balance, 50);
+        };
     };
-    it 'deposits amount into target account' => sub {
-      my $source = BankAccount->new(100);
-      my $target = BankAccount->new(0);
-      $source->transfer(50, $target);
-      is($target->balance, 50);
-    };
-  };
 };
 
 done_testing();
