@@ -8,19 +8,19 @@ BEGIN {
 }
 
 describe 'Bank Account' => sub {
-    context 'opening with no initial deposit' => sub {
+    context 'when opening with no initial deposit' => sub {
         it 'has an initial balance of 0.00' => sub {
             my $account = BankAccount->new();
             is($account->balance, 0.00);
         };
     };
-    context 'opening with an initial deposit' => sub {
+    context 'when opening with an initial deposit' => sub {
         it 'has an initial balance of the deposit amount' => sub {
             my $account = new BankAccount(50.00);
             is($account->balance, 50.00);
         };
     };
-    context 'transferring money' => sub {
+    context 'when transferring money' => sub {
         my $source = BankAccount->new(100);
         my $target = BankAccount->new(0);
         $source->transfer(50, $target);
